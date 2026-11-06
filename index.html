@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>رشدي علي الشريع | مطعم</title>
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700;900&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;font-family:'Cairo',sans-serif}
+body{background:#FFF8E7;color:#222}
+header{background:linear-gradient(90deg,#5C0A0A,#A4133C);color:#fff;padding:15px 5%;display:flex;justify-content:space-between;align-items:center;position:sticky;top:0;z-index:10}
+header h1{font-size:24px}
+header h1 span{color:#FFC107}
+header a{color:#fff;text-decoration:none;margin:0 10px;font-weight:700}
+.hero{background:url('https://images.unsplash.com/photo-1544025162-d76694265947?w=1200') center/cover;height:420px;display:flex;align-items:center;justify-content:center;text-align:center;position:relative}
+.hero::after{content:'';position:absolute;inset:0;background:rgba(0,0,0,.55)}
+.hero div{position:relative;z-index:1;color:#fff}
+.hero h2{font-size:48px;font-weight:900;line-height:1.2}
+.hero p{margin:15px 0;font-size:18px}
+.btn{background:#FFC107;color:#000;padding:12px 25px;border-radius:30px;font-weight:900;text-decoration:none;display:inline-block;border:none;cursor:pointer}
+.section{padding:40px 5%}
+.section h3{font-size:28px;margin-bottom:20px;text-align:center}
+.section h3 span{color:#A4133C}
+.tabs{display:flex;justify-content:center;gap:10px;margin-bottom:25px;flex-wrap:wrap}
+.tabs button{padding:10px 20px;border-radius:25px;border:1px solid #A4133C;background:#fff;cursor:pointer;font-weight:700}
+.tabs button.active{background:#A4133C;color:#fff}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:20px}
+.card{background:#fff;border-radius:20px;overflow:hidden;box-shadow:0 5px 20px rgba(0,0,0,.08)}
+.card img{width:100%;height:180px;object-fit:cover}
+.card .info{padding:15px}
+.card h4{font-size:19px}
+.card p{color:#777;font-size:14px;margin:8px 0}
+.price-row{display:flex;justify-content:space-between;align-items:center}
+.price{font-size:20px;font-weight:900;color:#A4133C}
+.add{background:#111;color:#fff;border:none;padding:8px 15px;border-radius:20px;cursor:pointer}
+.drinks{background:#111;color:#fff;border-radius:25px}
+.drinks .card{background:#222;color:#fff}
+.drinks .card p{color:#bbb}
+footer{background:#5C0A0A;color:#fff;text-align:center;padding:20px;margin-top:20px}
+#cart{position:fixed;bottom:20px;left:20px;background:#111;color:#fff;padding:12px 18px;border-radius:30px;font-weight:700;box-shadow:0 10px 30px rgba(0,0,0,.3);z-index:20}
+@media(max-width:600px){.hero h2{font-size:32px} header{flex-direction:column;gap:10px}}
+/* حركة الصور */
+.card img {
+  transition: transform 0.6s ease, filter 0.4s;
+  cursor: pointer;
+}
+.card:hover img {
+  transform: scale(1.15) rotate(1deg);
+  filter: brightness(1.1) saturate(1.2);
+}
+.card {
+  transition: transform 0.4s, box-shadow 0.4s;
+}
+.card:hover {
+  transform: translateY(-10px) scale(1.02);
+  box-shadow: 0 15px 35px rgba(164,19,60,.25);
+}
+
+/* صورة البطل بتتحرك */
+.hero {
+  animation: zoomHero 8s ease-in-out infinite alternate;
+}
+@keyframes zoomHero {
+  from { background-size: 100%; }
+  to { background-size: 115%; }
+}
+
+/* عنوان بيطلع وينزل */
+.hero h2 {
+  animation: floatText 3s ease-in-out infinite;
+}
+@keyframes floatText {
+  0%,100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+/* زرار بيخبط */
+.btn {
+  animation: pulseBtn 1.8s infinite;
+}
+@keyframes pulseBtn {
+  0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(255,193,7,.6); }
+  70% { transform: scale(1.05); box-shadow: 0 0 0 15px rgba(255,193,7,0); }
+  100% { transform: scale(1); }
+}
+
+/* شريط متحرك تحت المنيو */
+.marquee {
+  background: #FFC107;
+  color: #000;
+  font-weight: 900;
+  padding: 10px;
+  overflow: hidden;
+  white-space: nowrap;
+}
+.marquee span {
+  display: inline-block;
+  animation: marquee 15s linear infinite;
+}
+@keyframes marquee {
+  from { transform: translateX(-100%); }
+  to { transform: translateX(100%); }
+}
+/* Responsive Design */
+
+/* Tablets */
+@media (max-width: 992px) {
+    .container {
+        width: 95%;
+    }
+
+    .hero h1 {
+        font-size: 32px;
+    }
+
+    .row {
+        flex-wrap: wrap;
+    }
+
+    .col-md-4,
+    .col-md-6 {
+        width: 50%;
+    }
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+
+    body {
+        overflow-x: hidden;
+    }
+
+    .container {
+        width: 100%;
+        padding: 0 15px;
+    }
+
+    .navbar {
+        padding: 12px;
+    }
+
+    .navbar-nav {
+        text-align: center;
+    }
+
+    .hero {
+        padding: 40px 15px;
+        text-align: center;
+    }
+
+    .hero h1 {
+        font-size: 26px;
+    }
+
+    .hero p {
+        font-size: 15px;
+    }
+
+    .row {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .col-md-4,
+    .col-md-6,
+    .col-lg-4 {
+        width: 100%;
+        max-width: 100%;
+    }
+
+    img {
+        max-width: 100%;
+        height: auto;
+    }
+
+    .card {
+        margin-bottom: 20px;
+    }
+
+    button {
+        max-width: 100%;
+    }
+}
+
+/* Small Mobile */
+@media (max-width: 480px) {
+
+    h1 {
+        font-size: 24px;
+    }
+
+    h2 {
+        font-size: 21px;
+    }
+
+    p {
+        font-size: 14px;
+    }
+
+    .card img {
+        width: 100%;
+        object-fit: cover;
+    }
+}
+
+</style>
+</head>
+<body>
+
+<header>
+   <div class="marquee"><span>🔥 عرض اليوم: اشتري 2 كشري وخد التالت هدية 🔥 توصيل مجاني فوق 200 جنيه في طنطا 🔥</span></div> 
+  <h1>رشدي <span>علي الشريع</span></h1>
+  <nav><a href="#menu">الأكلات</a><a href="#drinks">المشروبات</a><a href="#contact">تواصل معنا</a></nav>
+</header>
+
+<div class="hero">
+  <div>
+    <h2>أطعم أكل بيتي<br>على أصوله في ميت بدر حلاوه</h2>
+    <p>مشويات - طواجن - أكلات شعبية | توصيل سريع لحد باب البيت</p>
+    <a class="btn" href="#menu">اطلب دلوقتي 🍽️</a>
+  </div>
+</div>
+
+<div class="section" id="menu">
+  <h3>قائمة <span>الأكلات</span></h3>
+  <div class="tabs">
+    <button class="active" onclick="filterMenu('all',this)">الكل</button>
+    <button onclick="filterMenu('grill',this)">مشويات</button>
+    <button onclick="filterMenu('tagin',this)">طواجن</button>
+    <button onclick="filterMenu('shaabi',this)">شعبي</button>
+  </div>
+  <div class="grid" id="menuGrid"></div>
+</div>
+
+<div class="section drinks" id="drinks">
+  <h3>المشروبات <span style="color:#FFC107">والعصائر</span></h3>
+  <div class="grid" id="drinksGrid"></div>
+</div>
+
+<div class="section" id="contact" style="text-align:center">
+  <h3>اطلب واتساب</h3>
+  <p>ميت بدر حلاوه - شارع التعاون | مفتوح يومياً من 11 صباحاً لـ 12 بالليل</p>
+  <br>
+  <a class="btn" href="https://wa.me/01069621418">اطلب على واتساب 📱</a>
+</div>
+
+<div id="cart">🛒 السلة: <span id="cartCount">0</span> | الإجمالي: <span id="cartTotal">0</span> ج</div>
+<footer>© 2026     رشدي علي الشريع - اتعمل بحب في   ميت بدر حلاوه ❤️</footer>
+
+<script>
+const foods=[
+ {name:'نصف فرخة مشوية',desc:'فرخة بلدي على الفحم + عيش + سلطة',price:180,cat:'grill',img:'https://images.unsplash.com/photo-1598103442097-8b74394b95c6?w=600'},
+ {name:'ريش ضأن',desc:'ريش مشوية على الفحم بصوص رشدي الخاص',price:320,cat:'grill',img:'https://images.unsplash.com/photo-1544025162-d76694265947?w=600'},
+ {name:'كباب حلة',desc:'لحم بلدي + بصل مكرمل + فلفل',price:260,cat:'grill',img:'https://images.unsplash.com/photo-1529042410759-befb1204b468?w=600'},
+ {name:'طاجن بامية باللحمة',desc:'طاجن فخار + عيش بلدي',price:150,cat:'tagin',img:'https://images.unsplash.com/photo-1585032226651-759b368d7246?w=600'},
+ {name:'طاجن ملوخية',desc:'ملوخية بالطشة + فراخ',price:130,cat:'tagin',img:'https://images.unsplash.com/photo-1604908176997-125f25cc6f3d?w=600'},
+ {name:'فتة مصري',desc:'فتة بالخل والتوم + لحمة',price:170,cat:'shaabi',img:'https://images.unsplash.com/photo-1512058564366-18510be2db19?w=600'},
+ {name:'كشري رشدي',desc:'كشري بالدقة والشطة المميزة',price:85,cat:'shaabi',img:'https://images.unsplash.com/photo-1585032226651-759b368d7246?w=600'},
+ {name:'محشي مشكل',desc:'كرنب + ورق عنب + باذنجان',price:140,cat:'shaabi',img:'https://images.unsplash.com/photo-1547592180-85f173990554?w=600'},
+];
+const drinks=[
+ {name:'عصير مانجو فريش',price:60,img:'https://images.unsplash.com/photo-1600271886742-f049cd451bba?w=600'},
+ {name:'عصير جوافة',price:55,img:'https://images.unsplash.com/photo-1615478503562-ec2d8aa0e24e?w=600'},
+ {name:'بيبسي / سفن',price:30,img:'https://images.unsplash.com/photo-1629203851122-3726ecdf080e?w=600'},
+ {name:'شاي نعناع',price:20,img:'https://images.unsplash.com/photo-1544787219-7f47ccb76574?w=600'},
+];
+let cartCount=0, cartTotal=0;
+function renderFoods(cat='all'){
+  const grid=document.getElementById('menuGrid');
+  grid.innerHTML='';
+  foods.filter(f=>cat==='all'||f.cat===cat).forEach(f=>{
+    grid.innerHTML+=`<div class="card"><img src="${f.img}"><div class="info"><h4>${f.name}</h4><p>${f.desc}</p><div class="price-row"><span class="price">${f.price} ج</span><button class="add" onclick="addToCart(${f.price})">+ أضف</button></div></div></div>`;
+  });
+}
+function renderDrinks(){
+  const grid=document.getElementById('drinksGrid');
+  drinks.forEach(d=>{
+    grid.innerHTML+=`<div class="card"><img src="${d.img}"><div class="info"><h4>${d.name}</h4><div class="price-row"><span class="price">${d.price} ج</span><button class="add" onclick="addToCart(${d.price})">+ أضف</button></div></div></div>`;
+  });
+}
+function addToCart(price){cartCount++;cartTotal+=price;document.getElementById('cartCount').innerText=cartCount;document.getElementById('cartTotal').innerText=cartTotal;}
+function filterMenu(cat,btn){document.querySelectorAll('.tabs button').forEach(b=>b.classList.remove('active'));btn.classList.add('active');renderFoods(cat);}
+renderFoods();renderDrinks();
+</script>
+</body>
+</html>
